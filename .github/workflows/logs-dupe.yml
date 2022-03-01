@@ -1,0 +1,50 @@
+name: logs-dupe
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+env:
+  LOCAL_SLUG: "localhost:5000/name/app"
+  BUILDX_VERSION: "https://github.com/tonistiigi/buildx.git#logs-dupes"
+
+jobs:
+  logs-dupe:
+    runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v1
+      -
+        name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.LOCAL_SLUG }}
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: ${{ env.BUILDX_VERSION }}
+          driver-opts: |
+            network=host
+          buildkitd-flags: --debug
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: ./logs-dupe
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha,scope=logs-dupe
+          cache-to: type=gha,scope=logs-dupe,mode=max
