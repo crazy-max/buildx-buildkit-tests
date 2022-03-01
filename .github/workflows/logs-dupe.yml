@@ -7,11 +7,16 @@ on:
 
 env:
   LOCAL_SLUG: "localhost:5000/name/app"
-  BUILDX_VERSION: "https://github.com/tonistiigi/buildx.git#logs-dupes"
 
 jobs:
   logs-dupe:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        buildx-version:
+          - v0.8.0-rc1
+          - https://github.com/tonistiigi/buildx.git#logs-dupes
     services:
       registry:
         image: registry:2
@@ -22,8 +27,8 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Expose GitHub Runtime
-        uses: crazy-max/ghaction-github-runtime@v1
+        name: Remove dotnet
+        run: sudo rm -rf /usr/share/dotnet
       -
         name: Docker meta
         id: docker_meta
