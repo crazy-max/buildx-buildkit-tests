@@ -12,11 +12,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - driver: docker
-            platforms: linux/amd64
-          - driver: docker-container
-            platforms: linux/amd64
+        driver:
+          - docker
+          - docker-container
     steps:
       -
         name: Checkout
@@ -41,7 +39,6 @@ jobs:
           context: ./buildx-420
           load: true
           tags: ${{ env.DOCKER_IMAGE }}:latest
-          platforms: ${{ matrix.platforms }}
       -
         name: Docker images
         run: |
