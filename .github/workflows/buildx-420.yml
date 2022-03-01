@@ -46,4 +46,4 @@ jobs:
       -
         name: Inspect
         run: |
-          docker image inspect ${{ env.DOCKER_IMAGE }}:latest
+          docker image inspect ${{ steps.docker_build.outputs.digest }}
