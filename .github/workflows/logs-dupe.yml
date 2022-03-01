@@ -2,8 +2,6 @@ name: logs-dupe
 
 on:
   workflow_dispatch:
-  push:
-  pull_request:
 
 env:
   LOCAL_SLUG: "localhost:5000/name/app"

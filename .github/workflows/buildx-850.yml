@@ -2,7 +2,6 @@ name: buildx-850
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   test:
