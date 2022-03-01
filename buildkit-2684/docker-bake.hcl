@@ -1,5 +1,3 @@
-# docker-bake.hcl
-
 target "base" {
   dockerfile = "baseapp.Dockerfile"
   args = {

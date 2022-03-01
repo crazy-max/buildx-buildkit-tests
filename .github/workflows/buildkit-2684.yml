@@ -22,9 +22,11 @@ jobs:
         id: bake
         uses: docker/bake-action@master
         with:
+          files: |
+            ./buildkit-2684/docker-bake.hcl
+          targets: |
+            app
           set: |
-            *.context=./buildkit-420
-      -
-        name: Metadata JSON
-        run: |
-          cat ${{ steps.bake.outputs.metadata }}
+            *.context=./buildkit-2684
+            *.args.foo=bar
+            *.args.bar=foo
