@@ -1,4 +1,4 @@
-name: 883
+name: buildx-883
 
 on:
   workflow_dispatch:
