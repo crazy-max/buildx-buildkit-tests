@@ -1,0 +1,48 @@
+name: 883
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - v0.6.3
+          - v0.7.0
+          - v0.7.1
+          - https://github.com/docker/buildx.git#refs/pull/894/head
+          - https://github.com/crazy-max/buildx.git#fix-dockerignore
+          - https://github.com/crazy-max/buildx.git#vendor-buildkit
+          - https://github.com/docker/buildx.git#master
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: ${{ matrix.version }}
+      -
+        name: Create non permissive files
+        working-directory: buildx-883/data
+        run: |
+          mkdir folder1
+          echo "foo" > folder1/file1
+          echo "bar" > folder1/file2
+          echo "baz" > file3
+          sudo chown root.root folder1 folder1/file1 file3
+          sudo chmod 700 folder1
+          sudo chmod 600 folder1/file1 file3
+      -
+        name: Working tree check
+        run: sudo tree -f -pug -h -D ./883
+      -
+        name: Build
+        uses: docker/build-push-action@v2
+        with:
+          context: ./buildx-883
