@@ -3,7 +3,7 @@
 ARG GO_VERSION="1.17.7"
 
 FROM ubuntu:20.04 AS golang
-RUN export DEBIAN_FRONTEND="noninteractive" && apt-get update && apt-get install --no-install-recommends -y curl jq
+RUN export DEBIAN_FRONTEND="noninteractive" && apt-get update && apt-get install --no-install-recommends -y bash ca-certificates curl jq
 WORKDIR /golang
 RUN curl -m30 --retry 5 --retry-connrefused --retry-delay 5 -sSL "https://go.dev/dl/?mode=json&include=all" -o "godist.json"
 ARG GO_VERSION
