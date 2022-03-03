@@ -1,0 +1,29 @@
+name: buildx-978
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: https://github.com/docker/buildx.git#6efcee28d59e1aa4d935e8d4055ca5c0edff0a4b
+          driver-opts: |
+            image=moby/buildkit:master
+      -
+        name: Build
+        uses: docker/bake-action@master
+        with:
+          files: |
+            ./buildx-978/docker-bake.hcl
+          targets: |
+            app
+          set: |
+            *.context=./buildx-978
