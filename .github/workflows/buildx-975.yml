@@ -5,7 +5,7 @@ on:
 
 env:
   DOCKER_IMAGE: localhost:5000/name/app
-  GHCR_IMAGE: ghcr.io/docker/test-docker-action
+  GHCR_IMAGE: ghcr.io/crazy-max/buildx-buildkit-tests
 
 jobs:
   build:
@@ -57,7 +57,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
-          version: https://github.com/crazy-max/buildx.git#moby-remotedgst
+          version: https://github.com/docker/buildx.git#master
           driver: ${{ matrix.driver }}
           driver-opts: |
             network=host
@@ -72,7 +72,7 @@ jobs:
           push: ${{ matrix.push }}
           tags: |
             ${{ env.DOCKER_IMAGE }}:latest
-            ${{ env.GHCR_IMAGE }}:iidfile
+            ${{ env.GHCR_IMAGE }}:buildx-975
           platforms: ${{ matrix.platforms }}
       -
         name: Docker images
@@ -82,10 +82,14 @@ jobs:
         name: Check manifest
         if: ${{ matrix.push }}
         run: |
+          cat <<EOT >> metadata.json
+          ${{ steps.docker_build.outputs.metadata }}
+          EOT
+          digest=$(cat metadata.json | jq -r '."containerimage.digest"')
           set -x
-          docker pull ${{ env.DOCKER_IMAGE }}@${{ steps.docker_build.outputs.digest }}
           docker buildx imagetools inspect ${{ env.DOCKER_IMAGE }}:latest --format '{{json .}}'
-          docker buildx imagetools inspect ${{ env.GHCR_IMAGE }}:iidfile --format '{{json .}}'
+          docker buildx imagetools inspect ${{ env.GHCR_IMAGE }}:buildx-975 --format '{{json .}}'
+          docker pull ${{ env.DOCKER_IMAGE }}@$digest
       -
         name: Inspect
         if: ${{ matrix.load }}
