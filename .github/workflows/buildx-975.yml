@@ -57,7 +57,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
-          version: https://github.com/docker/buildx.git#master
+          version: https://github.com/crazy-max/buildx.git#moby-imgdgst
           driver: ${{ matrix.driver }}
           driver-opts: |
             network=host
