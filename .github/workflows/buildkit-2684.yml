@@ -16,7 +16,7 @@ jobs:
         with:
           version: v0.8.0-rc1
           driver-opts: |
-            image=moby/buildkit:master
+            image=crazymax/buildkit:2684
       -
         name: Build
         id: bake
