@@ -37,6 +37,6 @@ jobs:
             app
           set: |
             *.context=./buildkit-2684
-            *.args.foo=bar
-            *.args.bar=foo
+            app.tags=user/app:latest
+            app.output=type=cacheonly
             ${{ matrix.platform }}
