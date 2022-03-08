@@ -22,7 +22,8 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
-          version: v0.8.0-rc1
+          version: https://github.com/docker/buildx.git#master
+          buildkitd-flags: --debug
           driver-opts: |
             image=crazymax/buildkit:2684
       -
