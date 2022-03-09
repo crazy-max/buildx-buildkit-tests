@@ -1,4 +1,4 @@
-name: logs-dupe
+name: buildx-977
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ env:
   LOCAL_SLUG: "localhost:5000/name/app"
 
 jobs:
-  logs-dupe:
+  build:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -45,9 +45,9 @@ jobs:
         name: Build
         uses: docker/build-push-action@master
         with:
-          context: ./logs-dupe
+          context: ./buildx-977
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          cache-from: type=gha,scope=logs-dupe
-          cache-to: type=gha,scope=logs-dupe,mode=max
+          cache-from: type=gha,scope=buildx-977
+          cache-to: type=gha,scope=buildx-977,mode=max
