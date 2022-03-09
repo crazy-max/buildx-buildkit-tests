@@ -10,11 +10,6 @@
         "type": "docker-image",
         "ref": "docker.io/library/busybox:latest",
         "pin": "sha256:34c3559bbdedefd67195e766e38cfbb0fcabff4241dbee3f390fd6e3310f5ebc"
-      },
-      {
-        "type": "docker-image",
-        "ref": "docker.io/library/busybox:latest",
-        "pin": "sha256:34c3559bbdedefd67195e766e38cfbb0fcabff4241dbee3f390fd6e3310f5ebc"
       }
     ]
   },
