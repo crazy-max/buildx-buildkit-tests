@@ -18,10 +18,10 @@ docker buildx bake --metadata-file metadata.json --set base.platform=linux/amd64
 cat metadata.json | jq
 
 # meta5.json
-docker buildx build --metadata-file md.json --build-context baseapp=docker-image://alpine --platform linux/amd64,linux/arm64 .
+docker buildx build --metadata-file metadata.json --build-context baseapp=docker-image://alpine --platform linux/amd64,linux/arm64 .
 
 # meta6.json
 ./hack/binaries
 sudo ./bin/buildkitd
-buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt platform=linux/amd64,linux/arm64 --opt context:baseapp::linux/amd64=docker-image://busybox --opt context:baseapp::linux/arm64=docker-image://alpine --metadata-file md.json --opt build-arg:foo=bar
+sudo ./bin/buildctl build --frontend dockerfile.v0 --local context=. --local dockerfile=. --opt platform=linux/amd64,linux/arm64 --opt context:baseapp::linux/amd64=docker-image://busybox --opt context:baseapp::linux/arm64=docker-image://alpine --metadata-file metadata.json --opt build-arg:foo=bar
 ```
