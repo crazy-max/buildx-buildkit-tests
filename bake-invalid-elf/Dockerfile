@@ -1,0 +1,8 @@
+# syntax=docker/dockerfile:1
+
+ARG GO_VERSION="1.18"
+
+FROM golang:${GO_VERSION}-alpine
+ENV GO111MODULE=auto
+ENV CGO_ENABLED=0
+ENV FOO=bar
