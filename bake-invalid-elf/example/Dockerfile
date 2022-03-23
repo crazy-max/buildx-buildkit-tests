@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 FROM --platform=$BUILDPLATFORM golang:1.17-alpine AS go
 FROM --platform=$BUILDPLATFORM tonistiigi/xx:1.1.0 AS xx
 
