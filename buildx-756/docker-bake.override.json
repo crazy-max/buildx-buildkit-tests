@@ -1,0 +1,9 @@
+{
+  "target": {
+    "default": {
+      "tags": [
+        "test123"
+      ]
+    }
+  }
+}
