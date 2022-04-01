@@ -1,0 +1,41 @@
+name: buildx-1038
+
+on:
+  workflow_dispatch:
+
+env:
+  LOCAL_SLUG: "localhost:5000/name/app"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        buildx-version:
+          - v0.8.1
+          - v0.7.1
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: ${{ env.BUILDX_VERSION }}
+          driver-opts: |
+            network=host
+          buildkitd-flags: --debug
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: ./buildx-1038
+          push: true
+          tags: localhost:5000/name/app:latest
