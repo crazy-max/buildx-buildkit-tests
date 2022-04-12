@@ -26,14 +26,16 @@ jobs:
         name: Build base
         uses: docker/build-push-action@v2
         with:
+          context: ./build-push-action-594
           target: base
           push: false
           cache-from: type=gha,scope=base
           cache-to: type=gha,mode=max,scope=base
       -
-        name: "Build docker image - prod"
+        name: Build prod
         uses: docker/build-push-action@v2
         with:
+          context: ./build-push-action-594
           target: prod
           tags: ghcr.io/crazy-max/buildx-buildkit-tests:build-push-action-594
           push: true
