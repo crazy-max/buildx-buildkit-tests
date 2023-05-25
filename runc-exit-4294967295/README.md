@@ -1,0 +1,3 @@
+```console
+$ docker buildx bake
+```
