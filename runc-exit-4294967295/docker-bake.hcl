@@ -143,6 +143,7 @@ target "tgt-20" {
   inherits = ["_common"]
   args = {
     HELLO = uuidv4()
+    FOO = "bar"
   }
 }
 
