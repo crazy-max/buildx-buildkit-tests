@@ -1,0 +1,7 @@
+services:
+  inc:
+    build:
+     context: .
+     dockerfile_inline: |
+       FROM busybox
+       RUN echo inc

@@ -1,0 +1,10 @@
+include:
+  - compose-inc.yml
+
+services:
+  foo:
+    build:
+     context: .
+     dockerfile_inline: |
+       FROM busybox
+       RUN echo foo
