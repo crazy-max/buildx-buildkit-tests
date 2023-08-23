@@ -1,4 +1,5 @@
 ```console
+$ cd /tmp
 $ cat <<EOT >> Dockerfile.app
 FROM scratch
 COPY foo /foo
