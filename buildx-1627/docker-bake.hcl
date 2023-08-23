@@ -1,4 +1,4 @@
 target "default" {
-  context = BAKE_CMD_CONTEXT
+  context = "."
   dockerfile = "cwd://Dockerfile.app"
 }
