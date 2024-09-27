@@ -1,0 +1,81 @@
+name: build-push-action-1222
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  git-context:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+      -
+        name: Sleep
+        run: sleep 10
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          file: ./build-push-action-1222/Dockerfile
+
+  git-context-prhead:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+      -
+        name: Sleep
+        run: sleep 10
+      -
+        name: Compute ref
+        run: |
+          gitref="${{ github.ref }}"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            gitref=$(echo "$gitref" | sed 's/\/merge$/\/head/')
+          fi
+          echo "GITREF=${gitref}" >> $GITHUB_ENV
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: "${{ github.server_url }}/${{ github.repository }}.git#${{ env.GITREF }}"
+          file: ./build-push-action-1222/Dockerfile
+
+  git-context-sha:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+      -
+        name: Sleep
+        run: sleep 10
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: "${{ github.server_url }}/${{ github.repository }}.git#${{ github.sha }}"
+          file: ./build-push-action-1222/Dockerfile
+
+  git-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Dump context
+        uses: crazy-max/ghaction-dump-context@v2
+      -
+        name: Sleep
+        run: sleep 10
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          file: ./build-push-action-1222/Dockerfile
