@@ -1,0 +1,35 @@
+{
+  "containerimage.buildinfo/linux/amd64": {
+    "frontend": "dockerfile.v0",
+    "attrs": {
+      "build-arg:foo": "bar",
+      "context:baseapp": "docker-image://busybox"
+    },
+    "sources": [
+      {
+        "type": "docker-image",
+        "ref": "docker.io/library/busybox:latest",
+        "pin": "sha256:caa382c432891547782ce7140fb3b7304613d3b0438834dce1cad68896ab110a"
+      }
+    ]
+  },
+  "containerimage.buildinfo/linux/arm64": {
+    "frontend": "dockerfile.v0",
+    "attrs": {
+      "build-arg:foo": "bar",
+      "context:baseapp": "docker-image://alpine"
+    },
+    "sources": [
+      {
+        "type": "docker-image",
+        "ref": "docker.io/library/alpine:latest",
+        "pin": "sha256:f22945d45ee2eb4dd463ed5a431d9f04fcd80ca768bb1acf898d91ce51f7bf04"
+      },
+      {
+        "type": "docker-image",
+        "ref": "docker.io/library/busybox:latest",
+        "pin": "sha256:caa382c432891547782ce7140fb3b7304613d3b0438834dce1cad68896ab110a"
+      }
+    ]
+  }
+}
