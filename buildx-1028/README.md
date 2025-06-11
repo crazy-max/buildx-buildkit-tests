@@ -82,7 +82,7 @@ ERROR: unable to prepare context: path "dockerfiles/debian8" not found
 
 ## Compose
 
-### `COMPOSE_NAKE=false`
+### `COMPOSE_BAKE=false`
 
 ```console
 $ docker compose -f tests/docker-compose.yml config
@@ -170,7 +170,7 @@ $ COMPOSE_BAKE=false docker compose -f tests/docker-compose.yml build
  ✔ debian9  Built
 ```
 
-### `COMPOSE_NAKE=true`
+### `COMPOSE_BAKE=true`
 
 ```console
 $ COMPOSE_BAKE=true docker --debug compose -f ./tests/docker-compose.yml build
