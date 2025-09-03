@@ -1,0 +1,36 @@
+name: buildkit-6178
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        buildkit:
+          - master
+          - v0.23.2
+        buildx:
+          - https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
+          - v0.27.0
+        context:
+          - https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178
+          - https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
+          - https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
+          - https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
+    steps:
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@master
+        with:
+          version: ${{ matrix.buildx }}
+          buildkitd-flags: --debug
+          driver-opts: |
+            image=moby/buildkit:${{ matrix.buildkit }}
+      -
+        name: Build
+        uses: docker/build-push-action@master
+        with:
+          context: ${{ matrix.context }}
