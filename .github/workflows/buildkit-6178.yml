@@ -128,6 +128,13 @@ jobs:
       -
         name: Build
         uses: docker/build-push-action@master
+        if: ${{ matrix.frontend == '' }}
+        with:
+          context: ${{ matrix.context }}
+      -
+        name: Build (set frontend in build-arg)
+        uses: docker/build-push-action@master
+        if: ${{ matrix.frontend != '' }}
         with:
           context: ${{ matrix.context }}
           build-args: |
