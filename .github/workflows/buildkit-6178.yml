@@ -11,107 +11,131 @@ jobs:
       matrix:
         include:
           -
+            case: 1
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178
           -
+            case: 2
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
           -
+            case: 3
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
           -
+            case: 4
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
           -
+            case: 5
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178
           -
+            case: 6
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
           -
+            case: 7
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
           -
+            case: 8
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
           -
+            case: 9
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178
           -
+            case: 10
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
           -
+            case: 11
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
           -
+            case: 12
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
           -
+            case: 13
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178
           -
+            case: 14
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
           -
+            case: 15
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 16
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 17
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 18
             buildkit: master
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 19
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 20
             buildkit: master
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 21
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 22
             buildkit: v0.23.2
             buildx: v0.27.0
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 23
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git#:buildkit-6178/df117
             frontend: docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72
           -
+            case: 24
             buildkit: v0.23.2
             buildx: https://github.com/tonistiigi/buildx.git#gitquerystring-cap-detect
             context: https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
