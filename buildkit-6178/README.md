@@ -14,16 +14,18 @@
 | 12 | v0.23.2     | v0.27.0     | ?subdir=buildkit-6178/df117 |                                 | ❌       |
 | 13 | v0.23.2     | v0.28.0-dev | #:buildkit-6178             |                                 | ✅       |
 | 14 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178       |                                 | ⚠️      |
-| 15 | v0.23.2     | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 16 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 17 | v0.24.0-dev | v0.27.0     | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 18 | v0.24.0-dev | v0.27.0     | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 19 | v0.24.0-dev | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 20 | v0.24.0-dev | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 21 | v0.23.2     | v0.27.0     | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 22 | v0.23.2     | v0.27.0     | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ❌❌      |
-| 23 | v0.23.2     | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
-| 24 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 15 | v0.23.2     | v0.28.0-dev | #:buildkit-6178/df117       |                                 | ✅       |
+| 16 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178/df117 |                                 | ⚠️      |
+| 17 | v0.23.2     | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 18 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 19 | v0.24.0-dev | v0.27.0     | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 20 | v0.24.0-dev | v0.27.0     | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 21 | v0.24.0-dev | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 22 | v0.24.0-dev | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 23 | v0.23.2     | v0.27.0     | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 24 | v0.23.2     | v0.27.0     | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ❌❌      |
+| 25 | v0.23.2     | v0.28.0-dev | #:buildkit-6178/df117       | dockerfile-upstream:v1.18.0-dev | ✅       |
+| 26 | v0.23.2     | v0.28.0-dev | ?subdir=buildkit-6178/df117 | dockerfile-upstream:v1.18.0-dev | ✅       |
 
 ### 4
 
@@ -204,18 +206,30 @@ ERROR: failed to build: current frontend does not support Git URLs with query st
 
 Fails right away with custom error message wrapped as expected.
 
-### 22
+### 16
 
-https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17429456565/job/49484195259#step:4:181
+https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17431862935/job/49491898950#step:3:179
 
 ```
-/usr/bin/docker buildx build --build-arg BUILDKIT_SYNTAX=docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72 --iidfile /home/runner/work/_temp/docker-actions-toolkit-xgoIpe/build-iidfile-c960fc1b38.txt --attest type=provenance,mode=max,builder-id=https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17429456565/attempts/1 --metadata-file /home/runner/work/_temp/docker-actions-toolkit-xgoIpe/build-metadata-13b24f59ed.json https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
-#0 building with "builder-f53ba407-581b-4db3-a092-63daf1e90b66" instance using docker-container driver
+/usr/bin/docker buildx build --iidfile /home/runner/work/_temp/docker-actions-toolkit-j2TaFW/build-iidfile-e39f28d796.txt --attest type=provenance,mode=max,builder-id=https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17431862935/attempts/1 --metadata-file /home/runner/work/_temp/docker-actions-toolkit-j2TaFW/build-metadata-519207ca4b.json https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
+ERROR: failed to build: current frontend does not support Git URLs with query string components. Git URLs with query string are supported since Dockerfile v1.18 and BuildKit v0.24. Use BUILDKIT_SYNTAX build-arg, #syntax directive in Dockerfile or update to latest BuildKit.
+```
+
+Fails right away with custom error message wrapped as expected.
+
+### 24
+
+https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17431862935/job/49491899000#step:4:181
+
+```
+/usr/bin/docker buildx build --build-arg BUILDKIT_SYNTAX=docker.io/docker/dockerfile-upstream:master@sha256:858ceec87795a5f306e5e5afdd855d7c31fbab7373c96ca0f92000b5f0caee72 --iidfile /home/runner/work/_temp/docker-actions-toolkit-YS8q0J/build-iidfile-e6ddcda284.txt --attest type=provenance,mode=max,builder-id=https://github.com/crazy-max/buildx-buildkit-tests/actions/runs/17431862935/attempts/1 --metadata-file /home/runner/work/_temp/docker-actions-toolkit-YS8q0J/build-metadata-71517bd4bf.json https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
+#0 building with "builder-11e60d9b-003c-47b0-853d-50525891ed87" instance using docker-container driver
 
 #1 [internal] load git source https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117
 #1 0.016 Initialized empty Git repository in /var/lib/buildkit/runc-overlayfs/snapshots/snapshots/1/fs/
-#1 0.432 warning: redirecting to https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/
-#1 0.432 fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/info/refs not valid: is this a git repository?
+#1 0.763 warning: redirecting to https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/
+#1 0.763 fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/info/refs not valid: is this a git repository?
 #1 ERROR: error fetching default branch for repository https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117: git stderr:
 warning: redirecting to https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/
 fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/info/refs not valid: is this a git repository?
@@ -223,8 +237,8 @@ fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/d
 ------
  > [internal] load git source https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117:
 0.016 Initialized empty Git repository in /var/lib/buildkit/runc-overlayfs/snapshots/snapshots/1/fs/
-0.432 warning: redirecting to https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/
-0.432 fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/info/refs not valid: is this a git repository?
+0.763 warning: redirecting to https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/
+0.763 fatal: https://github.com/crazy-max/buildx-buildkit-tests?subdir=buildkit-6178/df117/info/refs not valid: is this a git repository?
 ------
 WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
 ERROR: failed to build: failed to solve: failed to read dockerfile: failed to load cache key: error fetching default branch for repository https://github.com/crazy-max/buildx-buildkit-tests.git?subdir=buildkit-6178/df117: git stderr:
