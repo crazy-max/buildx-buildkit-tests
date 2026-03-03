@@ -1,0 +1,3 @@
+target "default" {
+    context = "src"
+}
